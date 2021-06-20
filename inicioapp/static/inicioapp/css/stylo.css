@@ -1,0 +1,18 @@
+body{
+    background-color: black;
+    
+}
+header {
+    background-image: url('/static/inicioapp/img/jaguarete1.jpg');
+    height: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
+nav{
+    position:absolute;
+    margin-top:80px;
+    opacity:unset ;
+}
