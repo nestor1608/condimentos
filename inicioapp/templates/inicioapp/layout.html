@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>titulo</title>
+    <title>Jaguarete KAA.</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'inicioapp/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'inicioapp/css/stylo.css'%}">
@@ -15,6 +15,7 @@
 <body>
     <header>
         <h1>Jaguarete KAA S.A.</h1>
+
 
 
         <nav class="navbar  navbar-expand-lg navbar-light bg-light border border-dark shadow-lg ">
@@ -39,15 +40,18 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">opcion 1</a></li>
                             <li><a class="dropdown-item" href="#">opcion 2</a></li>
-
-                            <li><a class="dropdown-item" href="#">opcion 3</a></li>
                         </ul>
+
+                            
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Acerca de..</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contactanos</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'USUARIOS:registrarse' %}">Registrarse</a>
                     </li>
 
                 </ul>

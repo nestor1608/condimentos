@@ -1,0 +1,11 @@
+{% if form.errors %}
+<p>El usuario y la clave no coinciden, por favor intente nuevamente.</p>
+{% endif %}
+{% if next %}
+{% if user.is_authenticated %}
+<p>Tu cuenta no tiene acceso a esta página. Para proceder,
+    por favor inicie sesión con una cuenta que tenga acceso.</p>
+{% else %}
+<p>Inicie sesión para ver esta página.</p>
+{% endif %}
+{% endif %}
