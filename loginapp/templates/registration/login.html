@@ -2,7 +2,8 @@
 
 {% load static %}
 
-{% block content %}{% if form.errors %}
+{% block body %}
+{% if form.errors %}
 <p>El usuario y la clave no coinciden, por favor intente nuevamente.</p>
 {% endif %}
 {% if next %}
@@ -18,13 +19,7 @@
     {% csrf_token %}
     <div>
         <td>Usuario</td>
-        <td>{{ form.username }}</td>
-    </div>
-    <div>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
-    </div>
-    <div>
+        <td>{{ form }}</td>
         <input type="submit" value="ACCEDER" />
         <input type="hidden" name="next" value="{{ next }}" />
     </div>

@@ -1,0 +1,24 @@
+{% extends "inicioapp/layout.html" %}
+{%load static %}
+
+{%block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-4 border bg-primary">
+            <div class="form">
+                <form action="" class="forms" method="POST">
+                    {% csrf_token %}
+                    {{formulario}}
+                    <input class="btn btn-info" type="submit" value="Enviar">
+
+                </form>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

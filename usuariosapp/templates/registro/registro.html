@@ -1,0 +1,28 @@
+{% extends "inicioapp/layout.html" %}
+{% load static %}
+{% block body %}
+<div class="container ">
+    <div class="row">
+        <div class="col-5 bg-info border">
+            <h2>Formulario de Registro</h2>
+            <div class="caja  ">
+                <form class="form bg-primary border" method="post">
+                    {% csrf_token %}
+                    {% for campo in form %}
+                    
+                        
+                        {{ campo }}
+                        
+                        {% for error in campo.errors %}
+                    <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                    </p>
+                    {% endfor %}
+                    <button type="submit">Confirmar Registro</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

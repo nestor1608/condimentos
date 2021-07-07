@@ -16,3 +16,8 @@ nav{
     margin-top:80px;
     opacity:unset ;
 }
+h3:hover{
+    background: slategrey;
+    color: darkslategray;
+    
+}

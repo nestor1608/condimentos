@@ -13,50 +13,60 @@
 </head>
 
 <body>
-    <header>
-        <h1>Jaguarete KAA S.A.</h1>
+
+    <div class="container-fluid">
+        <header>
+            <h1>Jaguarete KAA S.A.</h1>
 
 
 
-        <nav class="navbar  navbar-expand-lg navbar-light bg-light border border-dark shadow-lg ">
-            <div class=" d-flex ">
-                <a class="navbar-brand" href="#">
-                    <h1 class=" text-dark">Jaguarete </h1>
-                </a>
 
-            </div>
+            <nav class="navbar  navbar-expand-lg navbar-light bg-light m-0 border-dark shadow-lg ">
+                <div class=" d-flex ">
+                    <a class="navbar-brand" href="{% url 'index'%}">
+                        <h1 class=" text-dark p-2">Jaguarete </h1>
+                    </a>
 
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                <form class="b-inline">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                <ul class="navbar-nav  mb-2 mb-lg-0">
+                </div>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="true">Categorias</a>
+                <div class=" navbar " id="navbarSupportedContent">
+                    <form class="b-inline">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <ul class="navbar-nav  mb-2 mb-lg-0">
 
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">opcion 1</a></li>
-                            <li><a class="dropdown-item" href="#">opcion 2</a></li>
-                        </ul>
 
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Quienes Somos</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{% url 'tienda' %}">Tienda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contacto' %}">Contactanos</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{% url 'USUARIOS:registrarse' %}">Registrarse</a>
+                        </li>
+                        <li>
+                            {% if user.is_authenticated %}
                             
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Acerca de..</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contactanos</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'USUARIOS:registrarse' %}">Registrarse</a>
-                    </li>
+                            <p class="nav-link"><a class="nav-link" href="{% url 'logout'%}?next={{request.path}}">Desconectarse</a>Usuario: {{ user.username }}</p>
 
-                </ul>
-            </div>
-        </nav>
+                            {% else %}
+                            
+                            <a class="nav-link" href="{% url 'login'%}">Acceder</a></p>
+                            {% endif %}
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+    </div>
+
 
 
 
@@ -69,8 +79,35 @@
     {% endblock %}
 
 
-    <footer class="text-center">
-        pagina Jaguarete
+    <footer class="footer text-faded text-center py-5">
+        <div class="container">
+            <p class="m-0">
+                <a href="#" class="link">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                <a href="#" class="link">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                <a href="#" class="link">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+            </p>
+            <p class="m-0 mbt">
+                <a href="sample.html" class="link">Política de privacidad</a> ·
+                <a href="sample.html" class="link">Aviso legal</a> ·
+                <a href="sample.html" class="link">Cookies</a>
+            </p>
+            <p class="m-0 mbt1">&copy; Jaguarete KAA S.A</p>
+        </div>
     </footer>
 
     <script src="{% static 'inicioapp/js/jquery-3.6.0.min.js' %}"></script>
