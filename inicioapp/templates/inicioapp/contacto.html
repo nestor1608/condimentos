@@ -1,21 +1,39 @@
 {% extends "inicioapp/layout.html" %}
 {%load static %}
 
-{%block body %}
+{% block body %}
 
 <div class="container">
-    <div class="row">
-        <div class="col-4 border bg-primary">
-            <div class="form">
-                <form action="" class="forms" method="POST">
+    <div class="row justify-content-center">
+        <div class="col-5 border bg-dark text-light p-3 mt-3 rounded-3">
+            <h2>Informacion de Contacto</h2>
+            
+                <form action="contacto" class="forms" method="POST">
                     {% csrf_token %}
-                    {{formulario}}
-                    <input class="btn btn-info" type="submit" value="Enviar">
+                    <table>
+                        <tr>
+                            <td>Nombre:</td>
+                            <td>{{formulario.nombre}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td>{{formulario.email}}</td>
+                        </tr>
+                        <tr>
+                            <td>Asunto:</td>
+                            <td>{{formulario.contenido}}</td>
+                        </tr>
+
+                    </table>
+                    
+                    
+                    
+                    <input class="btn btn-info float-end" type="submit" value="Enviar">
 
                 </form>
                 
                 
-            </div>
+            
         </div>
     </div>
 </div>

@@ -6,7 +6,7 @@ from inicioapp import views
 
 urlpatterns = [
     path('login/', name='login'),
-    path('logout',name='logout'),
+    path('logout/',name='logout'),
     
     
 ]

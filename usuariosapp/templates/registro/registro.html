@@ -1,26 +1,49 @@
 {% extends "inicioapp/layout.html" %}
-{% load static %}
+{%load static %}
+
 {% block body %}
 <div class="container ">
-    <div class="row">
-        <div class="col-5 bg-info border">
-            <h2>Formulario de Registro</h2>
-            <div class="caja  ">
-                <form class="form bg-primary border" method="post">
+    <div class="row justify-content-center">
+        <div class="col-4 ms-5  bg-dark text-light rounded-3 mt-3">
+            <h2>Formularios de Registro</h2>
+            
+                <form class="form p-3" method="post">
                     {% csrf_token %}
                     {% for campo in form %}
                     
-                        
-                        {{ campo }}
-                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>{{campo.label_tag}}</td>
+                                    
+                                </tr>
+                                <tr><td aria-placeholder="">{{ campo }}</td></tr>
+                            </thead>
+                        </table>
+
+                        {% if campo.help_text %}
+                        <small style="color: grey">{{ campo.help_text }}</small>
+                        {% endif %}
+
+
                         {% for error in campo.errors %}
-                    <p style="color: red">{{ error }}</p>
-                    {% endfor %}
-                    </p>
-                    {% endfor %}
-                    <button type="submit">Confirmar Registro</button>
-                </form>
-            </div>
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                        </p>
+                        {% endfor %}
+                        <div class="input float-end mb-3">
+                            <input class="btn btn-info rounded-pill" type="submit" value= "Confirmar Registro">
+                        </div>
+                        
+                    </form>
+                    
+                    
+                           
+                            
+                        
+                        
+                        
+            
         </div>
     </div>
 </div>

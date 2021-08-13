@@ -8,4 +8,5 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def login (request):
     return render (request, 'login')
+    
 

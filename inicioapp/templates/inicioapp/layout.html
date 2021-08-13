@@ -14,66 +14,128 @@
 
 <body>
 
-    <div class="container-fluid">
-        <header>
-            <h1>Jaguarete KAA S.A.</h1>
 
-
-
-
-            <nav class="navbar  navbar-expand-lg navbar-light bg-light m-0 border-dark shadow-lg ">
-                <div class=" d-flex ">
-                    <a class="navbar-brand" href="{% url 'index'%}">
-                        <h1 class=" text-dark p-2">Jaguarete </h1>
-                    </a>
-
+    <header>
+        <div class="container-fluid">
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <h1 class="title">Jaguarete KAA S.A.</h1>
                 </div>
 
-                <div class=" navbar " id="navbarSupportedContent">
-                    <form class="b-inline">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                    <ul class="navbar-nav  mb-2 mb-lg-0">
 
-
-
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Quienes Somos</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="{% url 'tienda' %}">Tienda</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'contacto' %}">Contactanos</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="{% url 'USUARIOS:registrarse' %}">Registrarse</a>
-                        </li>
-                        <li>
-                            {% if user.is_authenticated %}
-                            
-                            <p class="nav-link"><a class="nav-link" href="{% url 'logout'%}?next={{request.path}}">Desconectarse</a>Usuario: {{ user.username }}</p>
-
-                            {% else %}
-                            
-                            <a class="nav-link" href="{% url 'login'%}">Acceder</a></p>
-                            {% endif %}
-                        </li>
-
-                    </ul>
+                <div class="col-4 text-light d-flex">
+                    {% if user.is_authenticated%}
+                    <h3>Hola.. {{user.username}}..!!</h3>
+                    {%else %}
+                    <h3>Bienvenido</h3>
+                    {% endif%}
                 </div>
-            </nav>
-    </div>
+            </div>
+
+        </div>
 
 
 
+        
 
 
+        <nav class="nav  navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid flex-nowrap">
+                <div class="row mt-3">
+                    <div class="col-2  d-flex ">
+                        <ul class="nav bg-light">
+                            <li class=" ">
+                                <h2><a class="navbar-item text-decoration-none text-dark" href="{% url 'index'%}"><img
+                                            src="{% static 'inicioapp/img/yaguarete.png'%}" alt="" 
+                                            height="24" class="d-inline ">Jaguarete</a></h2>
+                            </li>
+                        </ul>
+                        
+                        
+                    </div>
+                    <div class="col-4 collapse navbar-collapse d-flex " id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active ms-2" aria-current="page" href="#">Nosotros</a>
+                            </li>
+
+                            <li class="nav-item">
+
+                                <a class="nav-link active ms-2" href="{% url 'tienda' %}">Tienda</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle active ms-2" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Categorias
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                    <li><a class="dropdown-item" href="#">Especias</a></li>
+
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+
+                                    <li><a class="dropdown-item" href="#">Chimichurris</a></li>
+
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+
+                                    <li><a class="dropdown-item" href="#">Oregano</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+
+                                <a class="nav-link active ms-2" href="{% url 'contacto' %}">Contacto</a>
+                            </li>
+                        </ul>
+                        <li class="nav-item">
+                            <form class="d-flex" action="" method="post">{% csrf_token %}
+                                <table>
+                                    <tr>
+                                        <td><input class="form-control " type="search" placeholder="Buscador"
+                                                aria-label="Search"></td>
+                                        <td><input class="btn btn-success" type="submit" value="Buscar"></td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </li>
+                        
+                    </div>
+                    <div class="col-2 ms-3">
+                        <ul class="navbar-nav  mb-2 mb-lg-0">
+                            <li class="nav-item me-1">
+                                <a class="nav-link active" href="{% url 'USUARIOS:registrarse' %}">Registrarse</a>
+                            </li>
+                            <li class="nav-item ">
+                                {% if user.is_authenticated %}
+
+                                <a class="nav-link text-dark"
+                                    href="{% url 'logout'%}?next={{request.path}}">Desconectarse</a>
 
 
+                                {% else %}
+
+                                <a class="nav-link text-dark" href="{% url 'login'%}">Acceder</a>
+
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </nav>
     </header>
+
+
+
+
+
+
     {% block body%}
 
     {% endblock %}
@@ -102,16 +164,18 @@
                 </a>
             </p>
             <p class="m-0 mbt">
-                <a href="sample.html" class="link">Política de privacidad</a> ·
-                <a href="sample.html" class="link">Aviso legal</a> ·
-                <a href="sample.html" class="link">Cookies</a>
+                <a href="sample.html" class="link text-decoration-none text-light">Política de privacidad</a> ·
+                <a href="sample.html" class="link text-decoration-none text-light">Aviso legal</a> ·
+                <a href="sample.html" class="link text-decoration-none text-light">Cookies</a>
             </p>
             <p class="m-0 mbt1">&copy; Jaguarete KAA S.A</p>
         </div>
     </footer>
 
     <script src="{% static 'inicioapp/js/jquery-3.6.0.min.js' %}"></script>
-    <script src="{% static 'inicioapp/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'inicioapp/js/bootstrap.bundle.min.js' %}"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
     <script src="{% static 'inicioapp/js/popper.min.js' %}"></script>
     <script src="{% static 'inicioapp/js/bootstrap.min.js' %}"></script>
 

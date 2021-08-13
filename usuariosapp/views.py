@@ -11,4 +11,4 @@ def registrarse(request):
             return HttpResponseRedirect(reverse('login'))
     else:
         form = RegistroForm()
-    return render(request, 'registration/registro.html', {'form': form})
+    return render(request, 'registro/registro.html', {'form': form})
